@@ -107,7 +107,7 @@ if (isset($_POST['login'])){
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="index.php"><b>Imaging<img src='images/cam.png' class="img-thumbnail" style="width: 100px" align="center"></b>System</a>
+    <a href="index.php"><b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

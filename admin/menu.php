@@ -35,56 +35,56 @@
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-users"></i>
-                    <span>All Passengers</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="passengers.php"><i class="fa fa-circle-o"></i> View All</a></li>
-                    <li><a href="passengers.php"><i class="fa fa-circle-o"></i> Add New</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-user-secret"></i>
-                    <span>All Divers</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="index.php"><i class="fa fa-circle-o"></i> View All</a></li>
-                    <li><a href="index.php"><i class="fa fa-circle-o"></i> Add New</a></li>
-                </ul>
-            </li>
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-car"></i>
-                    <span>All Vehicles</span>
+                    <span>All Resources</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="vehicles.php"><i class="fa fa-circle-o"></i> View All</a></li>
-                    <li><a href="vehicles.php"><i class="fa fa-circle-o"></i> Add New</a></li>
+                    <li><a href="Resources.php"><i class="fa fa-circle-o"></i> View All</a></li>
+                    <li><a href="Resources.php"><i class="fa fa-circle-o"></i> Add New</a></li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-video-camera"></i>
-                    <span>All Cameras</span>
+                    <i class="fa fa-file-pdf-o"></i>
+                    <span>Applications</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="cameras.php"><i class="fa fa-circle-o"></i> View All</a></li>
-                    <li><a href="cameras.php"><i class="fa fa-circle-o"></i> Add New</a></li>
+                    <li><a href="Applications.php"><i class="fa fa-circle-o"></i> View All</a></li>
+                    <li><a href="Applications.php"><i class="fa fa-circle-o"></i> Add New</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i>
+                    <span>All Workers</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="All_workers.php"><i class="fa fa-circle-o"></i> View All</a></li>
+                    <li><a href="All_workers.php"><i class="fa fa-circle-o"></i> Add New</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-file-pdf-o"></i>
+                    <span>Get Reports</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a target="_blank" href="Report.php"><i class="fa fa-circle-o"></i> Generate</a></li>
                 </ul>
             </li>
             <li class="treeview">

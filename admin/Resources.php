@@ -16,24 +16,24 @@ $limit = 7;
 if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
 $start_from = ($page-1) * $limit;
 
-$sql = "SELECT * FROM CAMERA_TABLE";
+$sql = "SELECT * FROM Resources";
 $rs_result = mysqli_query($con, $sql);
 $count=1;
 ?>
 <div class="box">
     <div class="box-header">
-        <h3 class="box-title">Registered Cameras</h3>
+        <h3 class="box-title">Registered Resources</h3>
     </div>
     <div class="box-body">
         <table id="table" class="table table-bordered table-hover">
             <thead>
             <tr>
                 <th>#</th>
-                <th>NO</th>
-                <th>CAMERA MODEL</th>
-                <th>SERIAL NUMBER</th>
-                <th>CAMERA IP</th>
-                <th>LOCATION</th>
+                <th>RESOURCE ID</th>
+                <th>TYPE</th>
+                <th>RESOURCE NAME</th>
+                <th>COST</th>
+                <th>DESCRIPTION</th>
                 <th>DELETE</th>
 
             </tr>
@@ -44,12 +44,12 @@ $count=1;
                 ?>
                 <tr>
                     <td><?php echo $count;$count++ ?></td>
-                    <td><?php echo $row["camera_No"]; ?></td>
-                    <td><?php echo $row["camera_Model"];?></td>
-                    <td><?php echo $row["camera_Serial_No"]; ?></td>
-                    <td><?php echo $row["camera_IP"]; ?></td>
-                    <td><?php echo $row["camera_Location"]; ?></td>
-                    <td><a href="del.php?deluser=<?php echo $row["Login_Id"]; ?>" class="btn-sm btn-danger">Delete</a></td>
+                    <td><?php echo $row["Resource_Id"]; ?></td>
+                    <td><?php echo $row["Resource_Type"];?></td>
+                    <td><?php echo $row["Resource_Name"]; ?></td>
+                    <td><?php echo $row["Resource_Cost"]; ?></td>
+                    <td><?php echo $row["Resource_Desc"]; ?></td>
+                    <td><a href="del.php?res=<?php echo $row["Id"]; ?>" class="btn-sm btn-danger">Delete</a></td>
                 </tr>
                 <?php
             };
@@ -58,11 +58,11 @@ $count=1;
             <tfoot>
             <tr>
                 <th>#</th>
-                <th>NO</th>
-                <th>CAMERA MODEL</th>
-                <th>SERIAL NUMBER</th>
-                <th>CAMERA IP</th>
-                <th>LOCATION</th>
+                <th>RESOURCE ID</th>
+                <th>TYPE</th>
+                <th>RESOURCE NAME</th>
+                <th>COST</th>
+                <th>DESCRIPTION</th>
                 <th>DELETE</th>
 
             </tr>
@@ -70,7 +70,7 @@ $count=1;
         </table>
     </div>
 </div>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Add New Camera</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Add Resource</button>
 
 <div class="modal modal-default fade" id="modal-default">
     <div class="modal-dialog">
@@ -78,28 +78,37 @@ $count=1;
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Add Camera</h4>
+                <h4 class="modal-title">Add Resource</h4>
             </div>
             <div class="modal-body">
-                <form method="post" action="new_cam.php">
+                <form method="post" action="new_resource.php">
                     <div class="form-group">
-                        <input type="number" class="form-control" placeholder="Camera No" name="camera_No">
+                        <?php
+                        $chars = array(0,1,2,3,4,5,6,7,8,9,'A','b','C');
+                        $serial = '';
+                        $max = count($chars)-1;
+                        for($i=0;$i<12;$i++){
+                            $serial .=(!($i % 4) && $i ? '-' : '').$chars[rand(0, $max)];
+                        }
+                        ?>
+                        <input type="text" class="form-control" value="<?php echo $serial; ?>" placeholder="Resource Id" name="Resource_Id" readonly>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Model" name="camera_Model">
+                        <input type="text" class="form-control" placeholder="Resource type" name="Resource_Type">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Serial Number" name="camera_Serial_No">
+                        <input type="text" class="form-control" placeholder="Resource Name" name="Resource_Name">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Camera IP" name="camera_IP">
+                        <input type="text" class="form-control" placeholder="Resource Cost" name="Resource_Cost">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Camera Location" name="camera_Location">
+                    <div class="form-group">
+                        <textarea name="Resource_Desc" rows="5" class="form-control">Add More Data</textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" name="camera">Save changes</button>
+                        <button type="submit" class="btn btn-primary" name="resource">Save changes</button>
                     </div>
                 </form>
             </div>

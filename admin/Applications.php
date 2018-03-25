@@ -16,23 +16,25 @@ $limit = 7;
 if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
 $start_from = ($page-1) * $limit;
 
-$sql = "SELECT * FROM VEHICLE_REG_TABLE";
+$sql = "SELECT * FROM Job_Application WHERE Applicatin_Status ='Applied'";
 $rs_result = mysqli_query($con, $sql);
 $count=1;
 ?>
 <div class="box">
     <div class="box-header">
-        <h3 class="box-title">Registered Vehicles</h3>
+        <h3 class="box-title">Applied Jobs</h3>
     </div>
     <div class="box-body">
         <table id="table" class="table table-bordered table-hover">
             <thead>
             <tr>
                 <th>#</th>
-                <th>ID</th>
-                <th>NAME</th>
-                <th>VEHICLE TYPE</th>
-                <th>VEHICLE DETAILS</th>
+                <th>APPL CODE</th>
+                <th>APPLIED JOB</th>
+                <th>APPLICANT NAME</th>
+                <th>APPLICANT MAIL</th>
+                <th>DATE APPLIED</th>
+                <th>APPROVE</th>
                 <th>DELETE</th>
 
             </tr>
@@ -43,11 +45,13 @@ $count=1;
                 ?>
                 <tr>
                     <td><?php echo $count;$count++ ?></td>
-                    <td><?php echo $row["Vehicle_Id"]; ?></td>
-                    <td><?php echo $row["Vehicle_Name"];?></td>
-                    <td><?php echo $row["Vehicle_Type"]; ?></td>
-                    <td><?php echo $row["Vehicle_Details"]; ?></td>
-                    <td><a href="del.php?deluser=<?php echo $row["Login_Id"]; ?>" class="btn-sm btn-danger">Delete</a></td>
+                    <td><?php echo $row["Application_Id"]; ?></td>
+                    <td><?php echo $row["Application_Cons_Id"];?></td>
+                    <td><?php echo $row["Application_User_Name"]; ?></td>
+                    <td><?php echo $row["Application_User_Email"]; ?></td>
+                    <td><?php echo $row["Application_Date"]; ?></td>
+                    <td><a href="del.php?app=<?php echo $row["Id"]; ?>" class="btn-sm btn-primary">Approve</a></td>
+                    <td><a href="del.php?appl=<?php echo $row["Id"]; ?>" class="btn-sm btn-danger">Delete</a></td>
                 </tr>
                 <?php
             };
@@ -56,10 +60,12 @@ $count=1;
             <tfoot>
             <tr>
                 <th>#</th>
-                <th>ID</th>
-                <th>NAME</th>
-                <th>VEHICLE TYPE</th>
-                <th>VEHICLE DETAILS</th>
+                <th>APPL CODE</th>
+                <th>APPLIED JOB</th>
+                <th>APPLICANT NAME</th>
+                <th>APPLICANT MAIL</th>
+                <th>DATE APPLIED</th>
+                <th>APPROVE</th>
                 <th>DELETE</th>
 
             </tr>
@@ -67,7 +73,6 @@ $count=1;
         </table>
     </div>
 </div>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Add Vehicle</button>
 
 <div class="modal modal-default fade" id="modal-default">
     <div class="modal-dialog">
